@@ -1,5 +1,7 @@
-# 🐳 Dockerized Web Development Environment
-
+# 🐳 Dockerized Web Development Environment #
+---
+## This project builds upon the initial Docker setup created by my instructor, [Mahdi Abbaspour Shahmarasi](https://github.com/mahdi-abbaspour-shahmarasi) The PHP Dockerfile and part of the docker-compose configuration were originally written by him. I have extended and customized this base setup to suit the needs of this project ... ##
+----
 A clean, ready-to-use Docker-based setup for quickly spinning up a modern web development environment with minimal effort.
 
 ## 🚀 About This Project
