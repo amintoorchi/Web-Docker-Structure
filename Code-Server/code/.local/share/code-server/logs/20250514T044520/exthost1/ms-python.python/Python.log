@@ -1,0 +1,8 @@
+2025-05-14 04:45:24.981 [info] Experiment 'pythonRecommendTensorboardExt' is active
+2025-05-14 04:45:24.981 [info] Experiment 'pythonSurveyNotificationcf' is active
+2025-05-14 04:45:24.981 [info] Experiment 'pythonTerminalEnvVarActivation' is active
+2025-05-14 04:45:24.981 [warning] Dir "/home/coder/.pixi/envs" is not watchable (directory does not exist)
+2025-05-14 04:45:24.981 [info] Python interpreter path: /bin/python3
+2025-05-14 04:45:25.143 [info] > pyenv which python
+2025-05-14 04:45:25.144 [info] cwd: .
+2025-05-14 04:45:26.269 [info] Starting Jedi language server for coder.

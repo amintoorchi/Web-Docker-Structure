@@ -1,0 +1,5 @@
+2025-05-13 19:51:41.578 [info] Extension host with pid 44483 started
+2025-05-13 19:51:41.586 [info] Lock '/home/coder/.local/share/code-server/User/workspaceStorage/-b86df8a/vscode.lock': Lock acquired.
+2025-05-13 22:52:09.857 [info] Extension host terminating: renderer disconnected for too long (1)
+2025-05-13 22:52:09.861 [info] Lock '/home/coder/.local/share/code-server/User/workspaceStorage/-b86df8a/vscode.lock': Marking the lockfile as scheduled to be released in 6000 ms.
+2025-05-13 22:52:09.886 [info] Extension host with pid 44483 exiting with code 0

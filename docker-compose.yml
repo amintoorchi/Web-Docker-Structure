@@ -1,0 +1,55 @@
+version: "3.9"
+services:
+   nginx:
+     image: nginx
+     container_name: nginx
+     ports:
+       - 80:80  
+     volumes:
+         - ./nginx/conf.d:/etc/nginx/conf.d
+         - ./www/:/var/www/html/
+
+   php:
+     build: ./php/
+     container_name: php
+     expose:
+       - 9000         
+     volumes:
+         - ./www/:/var/www/html/
+   db:    
+      image: mariadb
+      restart: unless-stopped  
+      container_name: db
+      volumes: 
+          - ./mysql/data:/var/lib/mysql
+          - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      environment:  
+       MYSQL_ROOT_PASSWORD: 123456789
+       MYSQL_DATABASE: init-db
+   adminer:
+      image: adminer
+      container_name: adminer
+      restart: always
+      expose:
+      - 8081:8080
+      depends_on:
+          - db
+   phpmyadmin:
+        image: phpmyadmin
+        container_name: phpmyadmin
+        restart: always
+        expose:
+          - 8082:80
+        depends_on:
+          - db
+   code-server:
+      build: ./Code-Server
+      container_name: code-server
+      restart: always
+      ports:
+        - 8443:8080
+      environment:
+        PASSWORD: 123456789
+      volumes:
+        - ./Code-Server/code:/home/coder
+        - ./Code-Server/coder-config:/home/coder/.config

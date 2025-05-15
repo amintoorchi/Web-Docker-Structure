@@ -1,0 +1,43 @@
+2025-05-13 17:43:47.606 [info] Experiment 'pythonRecommendTensorboardExt' is active
+2025-05-13 17:43:47.606 [info] Experiment 'pythonTerminalEnvVarActivation' is active
+2025-05-13 17:43:47.606 [warning] Dir "/home/coder/.pixi/envs" is not watchable (directory does not exist)
+2025-05-13 17:43:47.606 [info] Starting Environment refresh
+2025-05-13 17:43:47.607 [info] Searching for interpreters in posix paths locator
+2025-05-13 17:43:47.607 [info] Searching for pyenv environments
+2025-05-13 17:43:47.607 [info] Searching for conda environments
+2025-05-13 17:43:47.607 [info] Searching for global virtual environments
+2025-05-13 17:43:47.607 [info] Searching for custom virtual environments
+2025-05-13 17:43:47.607 [info] pyenv is not installed
+2025-05-13 17:43:47.607 [info] Finished searching for pyenv environments: 122 milliseconds
+2025-05-13 17:43:47.607 [info] Finished searching for custom virtual envs: 121 milliseconds
+2025-05-13 17:43:47.607 [info] > conda info --json
+2025-05-13 17:43:47.607 [info] > hatch env show --json
+2025-05-13 17:43:47.607 [info] cwd: .
+2025-05-13 17:43:47.607 [info] > pyenv which python
+2025-05-13 17:43:47.607 [info] cwd: .
+2025-05-13 17:43:47.607 [info] Finished searching for global virtual envs: 330 milliseconds
+2025-05-13 17:43:47.851 [info] Finished searching for interpreters in posix paths locator: 610 milliseconds
+2025-05-13 17:43:47.851 [info] Environments refresh paths discovered (event): 611 milliseconds
+2025-05-13 17:43:47.851 [info] Environments refresh finished (event): 611 milliseconds
+2025-05-13 17:43:47.851 [info] Environments refresh paths discovered: 611 milliseconds
+2025-05-13 17:43:47.853 [info] Environment refresh took 614 milliseconds
+2025-05-13 17:43:47.914 [info] > python -c "import sys;print(sys.executable)"
+2025-05-13 17:43:48.005 [error] [Error: Command failed: python -c "import sys;print(sys.executable)"
+/bin/sh: 1: python: not found
+
+	at genericNodeError (node:internal/errors:984:15)
+	at wrappedFn (node:internal/errors:538:14)
+	at ChildProcess.exithandler (node:child_process:422:12)
+	at ChildProcess.emit (node:events:536:35)
+	at maybeClose (node:internal/child_process:1104:16)
+	at Socket.<anonymous> (node:internal/child_process:456:11)
+	at Socket.emit (node:events:524:28)
+	at Pipe.<anonymous> (node:net:343:12)] {
+  code: 127,
+  killed: false,
+  signal: null,
+  cmd: 'python -c "import sys;print(sys.executable)"'
+}
+2025-05-13 17:43:48.015 [info] > pyenv which python
+2025-05-13 17:43:48.015 [info] cwd: .
+2025-05-13 17:43:48.045 [error] Unable to start Jedi language server as a valid interpreter is not selected

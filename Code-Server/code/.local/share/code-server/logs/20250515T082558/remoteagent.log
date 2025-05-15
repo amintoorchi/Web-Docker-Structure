@@ -1,0 +1,15 @@
+2025-05-15 08:25:58.066 [info] 
+
+
+
+
+2025-05-15 08:25:58.074 [info] Extension host agent started.
+2025-05-15 08:26:10.069 [info] [172.18.0.5][98637026][ManagementConnection] New connection established.
+2025-05-15 08:26:10.627 [info] ComputeTargetPlatform: linux-arm64
+2025-05-15 08:26:12.991 [info] ComputeTargetPlatform: linux-arm64
+2025-05-15 08:26:14.957 [info] [172.18.0.5][8e282770][ExtensionHostConnection] New connection established.
+2025-05-15 08:26:14.961 [info] [172.18.0.5][8e282770][ExtensionHostConnection] <1695> Launched Extension Host Process.
+2025-05-15 08:26:16.928 [info] Getting Manifest... ms-python.debugpy
+2025-05-15 08:26:19.232 [info] Installing extension: ms-python.debugpy {"productVersion":{"version":"1.100.1","date":"2025-05-13T22:11:56.460Z"},"pinned":false,"operation":3,"isApplicationScoped":false,"profileLocation":{"$mid":1,"fsPath":"/home/coder/.local/share/code-server/extensions/extensions.json","external":"file:///home/coder/.local/share/code-server/extensions/extensions.json","path":"/home/coder/.local/share/code-server/extensions/extensions.json","scheme":"file"}}
+2025-05-15 08:26:20.002 [info] Getting Manifest... ms-python.python
+2025-05-15 08:26:21.755 [info] Extension installed successfully: ms-python.debugpy file:///home/coder/.local/share/code-server/extensions/extensions.json

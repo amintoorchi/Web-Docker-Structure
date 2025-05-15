@@ -1,0 +1,41 @@
+2025-05-14 07:17:55.540 [info] [main] Log level: Info
+2025-05-14 07:17:55.540 [info] [main] Validating found git in: "git"
+2025-05-14 07:17:55.540 [info] [main] Using git "2.39.5" from "git"
+2025-05-14 07:17:55.540 [info] [Model][doInitialScan] Initial repository scan started
+2025-05-14 07:17:55.540 [info] > git rev-parse --show-toplevel [3ms]
+2025-05-14 07:17:55.540 [info] fatal: not a git repository (or any parent up to mount point /home)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+2025-05-14 07:17:55.540 [info] > git rev-parse --show-toplevel [2ms]
+2025-05-14 07:17:55.540 [info] fatal: not a git repository (or any parent up to mount point /home)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+2025-05-14 07:17:55.540 [info] > git rev-parse --show-toplevel [2ms]
+2025-05-14 07:17:55.540 [info] fatal: not a git repository (or any parent up to mount point /home)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+2025-05-14 07:17:55.540 [info] > git rev-parse --show-toplevel [2ms]
+2025-05-14 07:17:55.540 [info] fatal: not a git repository (or any parent up to mount point /home)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+2025-05-14 07:17:55.540 [info] > git rev-parse --show-toplevel [3ms]
+2025-05-14 07:17:55.540 [info] > git rev-parse --git-dir --git-common-dir [7ms]
+2025-05-14 07:17:55.540 [info] [Model][openRepository] Opened repository (path): /home/coder/.oh-my-zsh
+2025-05-14 07:17:55.540 [info] [Model][openRepository] Opened repository (real path): /home/coder/.oh-my-zsh
+2025-05-14 07:17:55.540 [info] > git config --get commit.template [5ms]
+2025-05-14 07:17:55.540 [info] > git rev-parse --show-toplevel [6ms]
+2025-05-14 07:17:55.540 [info] fatal: not a git repository (or any parent up to mount point /home)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+2025-05-14 07:17:55.540 [info] [Model][doInitialScan] Initial repository scan completed - repositories (1), closed repositories (0), parent repositories (0), unsafe repositories (0)
+2025-05-14 07:17:55.540 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [6ms]
+2025-05-14 07:17:55.540 [info] > git for-each-ref --sort -committerdate --format %(refname)%00%(objectname)%00%(*objectname) [2ms]
+2025-05-14 07:17:55.551 [info] > git status -z -uall [74ms]
+2025-05-14 07:17:55.600 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [8ms]
+2025-05-14 07:17:55.605 [info] > git config --get commit.template [6ms]
+2025-05-14 07:17:55.606 [info] > git config --get --local branch.master.vscode-merge-base [2ms]
+2025-05-14 07:17:55.616 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/origin/master refs/remotes/origin/master [5ms]
+2025-05-14 07:17:55.622 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [8ms]
+2025-05-14 07:17:55.623 [info] > git merge-base refs/heads/master refs/remotes/origin/master [2ms]
+2025-05-14 07:17:55.638 [info] > git diff --name-status -z --diff-filter=ADMR c34c1da736f4f162206e1153e66850788f3e2e16...refs/remotes/origin/master [11ms]
+2025-05-14 07:17:55.640 [info] > git for-each-ref --sort -committerdate --format %(refname)%00%(objectname)%00%(*objectname) [3ms]
+2025-05-14 07:17:55.704 [info] > git status -z -uall [73ms]
+2025-05-14 07:17:56.434 [info] > git check-ignore -v -z --stdin [3ms]
+2025-05-14 07:18:00.226 [info] > git rev-parse --show-toplevel [2ms]
+2025-05-14 07:18:00.226 [info] fatal: not a git repository (or any parent up to mount point /home)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).

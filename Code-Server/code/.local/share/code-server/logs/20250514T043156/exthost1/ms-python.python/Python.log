@@ -1,0 +1,59 @@
+2025-05-14 04:33:54.554 [info] Experiment 'pythonRecommendTensorboardExt' is active
+2025-05-14 04:33:54.554 [info] Experiment 'pythonSurveyNotificationcf' is active
+2025-05-14 04:33:54.554 [info] Experiment 'pythonTerminalEnvVarActivation' is active
+2025-05-14 04:33:54.584 [warning] Dir "/home/coder/.pixi/envs" is not watchable (directory does not exist)
+2025-05-14 04:33:54.666 [info] Starting Environment refresh
+2025-05-14 04:33:54.666 [info] Searching for interpreters in posix paths locator
+2025-05-14 04:33:54.678 [info] Searching for pyenv environments
+2025-05-14 04:33:54.678 [info] Searching for conda environments
+2025-05-14 04:33:54.679 [info] Searching for global virtual environments
+2025-05-14 04:33:54.679 [info] Searching for custom virtual environments
+2025-05-14 04:33:54.769 [info] pyenv is not installed
+2025-05-14 04:33:54.769 [info] Finished searching for pyenv environments: 101 milliseconds
+2025-05-14 04:33:54.770 [info] Finished searching for custom virtual envs: 100 milliseconds
+2025-05-14 04:33:54.777 [info] > conda info --json
+2025-05-14 04:33:54.783 [info] > hatch env show --json
+2025-05-14 04:33:54.783 [info] cwd: .
+2025-05-14 04:33:54.788 [info] > pyenv which python
+2025-05-14 04:33:54.788 [info] cwd: .
+2025-05-14 04:33:54.788 [info] Finished searching for global virtual envs: 118 milliseconds
+2025-05-14 04:33:54.796 [info] Found: /bin/python3 --> /bin/python3.11
+2025-05-14 04:33:54.797 [info] Found: /bin/python3.11 --> /bin/python3.11
+2025-05-14 04:33:54.806 [info] Found: /usr/bin/python3 --> /usr/bin/python3.11
+2025-05-14 04:33:54.807 [info] Found: /usr/bin/python3.11 --> /usr/bin/python3.11
+2025-05-14 04:33:54.829 [info] Finished searching for interpreters in posix paths locator: 161 milliseconds
+2025-05-14 04:33:54.829 [info] > /bin/python3 -I ./.local/share/code-server/extensions/ms-python.python-2025.4.0-universal/python_files/get_output_via_markers.py ./.local/share/code-server/extensions/ms-python.python-2025.4.0-universal/python_files/interpreterInfo.py
+2025-05-14 04:33:54.876 [info] > /usr/bin/python3 -I ./.local/share/code-server/extensions/ms-python.python-2025.4.0-universal/python_files/get_output_via_markers.py ./.local/share/code-server/extensions/ms-python.python-2025.4.0-universal/python_files/interpreterInfo.py
+2025-05-14 04:33:54.876 [info] Environments refresh paths discovered (event): 213 milliseconds
+2025-05-14 04:33:54.876 [info] Environments refresh paths discovered: 213 milliseconds
+2025-05-14 04:33:54.925 [info] Environments refresh finished (event): 262 milliseconds
+2025-05-14 04:33:54.938 [info] Environment refresh took 276 milliseconds
+2025-05-14 04:33:54.951 [info] Python interpreter path: /bin/python3
+2025-05-14 04:33:55.473 [info] Shell integration status changed, can confirm it's working.
+2025-05-14 04:33:55.682 [info] Discover tests for workspace name: coder - uri: /home/coder/Projects/project1/index.py
+2025-05-14 04:33:56.407 [info] Starting Jedi language server for coder.
+2025-05-14 04:33:59.858 [info] Send text to terminal:  /usr/bin/env /bin/python3 /home/coder/.local/share/code-server/extensions/ms-python.debugpy-2025.6.0-linux-x64/bundled/libs/debugpy/adapter/../../debugpy/launcher 53921 -- /home/coder/Projects/project1/index.py 
+2025-05-14 04:36:14.058 [info] Discover tests for workspace name: coder - uri: /home/coder/.local/share/code-server/User/settings.json
+2025-05-14 04:36:17.479 [info] Discover tests for workspace name: coder - uri: /home/coder/.local/share/code-server/User/settings.json
+2025-05-14 04:36:27.752 [info] Discover tests for workspace name: coder - uri: /home/coder/Projects/project1/index.py
+2025-05-14 04:36:30.636 [info] Discover tests for workspace name: coder - uri: /home/coder/Projects/project1/index.py
+2025-05-14 04:36:32.213 [info] Discover tests for workspace name: coder - uri: /home/coder/Projects/project1/index.py
+2025-05-14 04:36:33.424 [info] Discover tests for workspace name: coder - uri: /home/coder/Projects/project1/index.py
+2025-05-14 04:36:37.775 [info] Discover tests for workspace name: coder - uri: /home/coder/Projects/project1/index.py
+2025-05-14 04:36:40.544 [info] Discover tests for workspace name: coder - uri: /home/coder/Projects/project1/index.py
+2025-05-14 04:36:43.453 [info] Discover tests for workspace name: coder - uri: /home/coder/Projects/project1/index.py
+2025-05-14 04:36:47.291 [info] Discover tests for workspace name: coder - uri: /home/coder/Projects/project1/index.py
+2025-05-14 04:36:52.414 [info] Discover tests for workspace name: coder - uri: /home/coder/Projects/project1/index.py
+2025-05-14 04:36:54.528 [info] Discover tests for workspace name: coder - uri: /home/coder/Projects/project1/index.py
+2025-05-14 04:36:57.860 [info] Discover tests for workspace name: coder - uri: /home/coder/Projects/project1/index.py
+2025-05-14 04:36:59.709 [info] Discover tests for workspace name: coder - uri: /home/coder/Projects/project1/index.py
+2025-05-14 04:37:01.252 [info] Discover tests for workspace name: coder - uri: /home/coder/Projects/project1/index.py
+2025-05-14 04:37:05.059 [info] Discover tests for workspace name: coder - uri: /home/coder/Projects/project1/index.py
+2025-05-14 04:37:08.226 [info] Discover tests for workspace name: coder - uri: /home/coder/Projects/project1/index.py
+2025-05-14 04:37:12.372 [info] Discover tests for workspace name: coder - uri: /home/coder/Projects/project1/index.py
+2025-05-14 04:37:13.684 [info] Discover tests for workspace name: coder - uri: /home/coder/Projects/project1/index.py
+2025-05-14 04:37:16.011 [info] Discover tests for workspace name: coder - uri: /home/coder/Projects/project1/index.py
+2025-05-14 04:37:27.793 [info] Discover tests for workspace name: coder - uri: /home/coder/Projects/project1/index.py
+2025-05-14 04:37:28.367 [info] Discover tests for workspace name: coder - uri: /home/coder/Projects/project1/index.py
+2025-05-14 04:37:36.109 [info] Discover tests for workspace name: coder - uri: /home/coder/Projects/project1/index.py
+2025-05-14 04:37:37.545 [info] Discover tests for workspace name: coder - uri: /home/coder/Projects/project1/index.py
