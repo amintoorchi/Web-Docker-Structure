@@ -17,6 +17,7 @@ The goal is to help developers build, test, and debug their PHP-based projects i
 
 ---
 
+```markdown
 ## 🔧 Quick Start
 
 To launch the environment, simply run:
