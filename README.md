@@ -68,10 +68,3 @@ docker-compose up -d
   | phpMyAdmin     | 8080 |
   | Adminer        | 8081 |
   | Code Server    | 8443 |
-
----
-
-## 📄 License
-  This project is licensed under the [MIT License](LICENSE).
-
-......
