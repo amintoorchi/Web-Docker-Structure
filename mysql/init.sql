@@ -1,8 +1,3 @@
-CREATE DATABASE db_site1;
-GRANT ALL PRIVILEGES ON db_site1.* TO 'root'@'%';
+CREATE DATABASE first_database;
+GRANT ALL PRIVILEGES ON first_database.* TO 'root'@'%';
 FLUSH PRIVILEGES;
-
-CREATE DATABASE db_site2;
-GRANT ALL PRIVILEGES ON db_site2.* TO 'root'@'%';
-FLUSH PRIVILEGES;
-
