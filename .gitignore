@@ -5,6 +5,10 @@ mysql/data
 .env
 .env.local
 
+# Certbot generated certificates and configs
+certbot/conf/
+certbot/www/
+
 # NGINX logs (if mounted outside container)
 nginx/logs/
 *.log
