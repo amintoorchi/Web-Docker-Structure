@@ -12,6 +12,8 @@ services:
       - ./www/:/var/www/html
       # Certbot well-known directory for verification
       - ./certbot/www:/var/www/certbot
+
+      - ./certbot/conf:/etc/letsencrypt
     # Depends on PHP to ensure the application logic is ready
     depends_on:
       - php
@@ -27,7 +29,7 @@ services:
     # The command should ideally be run separately or scheduled, 
     # but kept here as per your original structure.
     # NOTE: Replace {email} and {domain} with actual values.
-    command: certonly --webroot -w /var/www/certbot --email amin.tourchie@gmail.com -d mydomain.com --agree-tos
+    command: certonly --webroot -w /var/www/certbot --email {email} -d {domain} --agree-tos
     # Do not start automatically if you plan to run it once and stop
     # restart: "no" 
 
