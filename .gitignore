@@ -1,5 +1,6 @@
 # MySQL/MariaDB data directory (all database files)
 mysql/data/
+mysql/data/*
 
 # Environment files with sensitive data
 .env
