@@ -1,5 +1,0 @@
-2025-05-14 03:50:33.511 [info] Extension host with pid 45283 started
-2025-05-14 03:50:33.516 [info] Lock '/home/coder/.local/share/code-server/User/workspaceStorage/-b86df8a/vscode.lock': Lock acquired.
-2025-05-14 04:00:04.481 [info] Extension host terminating: received terminate message from renderer
-2025-05-14 04:00:04.484 [info] Lock '/home/coder/.local/share/code-server/User/workspaceStorage/-b86df8a/vscode.lock': Marking the lockfile as scheduled to be released in 6000 ms.
-2025-05-14 04:00:04.513 [info] Extension host with pid 45283 exiting with code 0

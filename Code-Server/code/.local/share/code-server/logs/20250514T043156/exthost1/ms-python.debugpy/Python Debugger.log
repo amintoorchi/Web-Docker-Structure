@@ -1,8 +1,0 @@
-2025-05-14 04:33:58.953 [info] Resolving launch configuration with substituted variables
-2025-05-14 04:33:59.001 [info] DAP Server launched with command: /bin/python3 /home/coder/.local/share/code-server/extensions/ms-python.debugpy-2025.6.0-linux-x64/bundled/libs/debugpy/adapter
-2025-05-14 04:33:59.194 [info] Received 'debugpySockets' event from debugpy.
-2025-05-14 04:33:59.203 [info] Received 'debugpySockets' event from debugpy.
-2025-05-14 04:33:59.203 [info] Received 'debugpySockets' event from debugpy.
-2025-05-14 04:34:00.735 [info] Received 'debugpySockets' event from debugpy.
-2025-05-14 04:34:01.866 [info] Received 'debugpySockets' event from debugpy.
-2025-05-14 04:34:01.894 [info] Received 'debugpySockets' event from debugpy.

@@ -1,0 +1,27 @@
+# MySQL/MariaDB data directory (all database files)
+mysql/data/
+
+# Environment files with sensitive data
+.env
+.env.local
+
+# NGINX logs (if mounted outside container)
+nginx/logs/
+*.log
+
+# PHP temporary files (if any)
+*.tmp
+*.cache
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# macOS system files
+.DS_Store
+
+# Docker temporary files
+*.bak
+*.sock
