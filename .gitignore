@@ -6,8 +6,8 @@ mysql/data
 .env.local
 
 # Certbot generated certificates and configs
-certbot/conf/
-certbot/www/
+certbot/conf/*
+certbot/www/*
 
 # NGINX logs (if mounted outside container)
 nginx/logs/
@@ -25,7 +25,11 @@ nginx/logs/
 
 # macOS system files
 .DS_Store
+Thumbs.db
 
 # Docker temporary files
 *.bak
 *.sock
+
+
+docker-compose.override.yml
