@@ -2,6 +2,17 @@
 
 A clean, ready-to-use Docker-based setup for quickly spinning up a modern web development environment with minimal effort.
 
+
+
+
+<p align="center">
+  <img src="images/screenshot.png" alt="Dashboard Preview" width="600" style="border-radius: 12px;"> 
+</p>
+
+
+
+
+
 -----
 
 ### About This Project
