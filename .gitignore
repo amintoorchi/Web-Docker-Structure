@@ -23,9 +23,19 @@ nginx/logs/
 *.swp
 *.swo
 
-# macOS system files
-.DS_Store
+# macOS & .... system files
 Thumbs.db
+.DS_Store
+.AppleDouble
+.LSOverride
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
 
 # Docker temporary files
 *.bak
