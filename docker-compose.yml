@@ -1,77 +1,45 @@
 services:
   nginx:
-    image: nginx:latest # Use a specific tag, like 'latest', for clarity
+    image: nginx:latest
     container_name: nginx
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      # Nginx configuration files
       - ./nginx/conf.d:/etc/nginx/conf.d
-      # Application source code
       - ./www/:/var/www/html
-      # Certbot well-known directory for verification
-      - ./certbot/www:/var/www/certbot
-
-      - ./certbot/conf:/etc/letsencrypt
-    # Depends on PHP to ensure the application logic is ready
+      - ./certbot/www:/var/www/certbot 
+      - ./certbot/conf:/etc/letsencrypt 
     depends_on:
       - php
 
-  certbot:
-    image: certbot/certbot
-    container_name: certbot
-    volumes:
-      # Let's Encrypt configuration and certificatesa
-      - ./certbot/conf:/etc/letsencrypt
-      # Webroot directory for verification
-      - ./certbot/www:/var/www/certbot # Corrected: added leading '/'
-    # The command should ideally be run separately or scheduled, 
-    # but kept here as per your original structure.
-    # NOTE: Replace {email} and {domain} with actual values.
-    command: certonly --webroot -w /var/www/certbot --email {email} -d {domain} --agree-tos
-    # Do not start automatically if you plan to run it once and stop
-    # restart: "no" 
-
   php:
-    # Builds the image from a Dockerfile in the ./php directory
     build: ./php/
     container_name: php
-    # Exposes port 9000 internally for Nginx to communicate with FPM
     expose:
       - "9000"
     volumes:
-      # Application source code
       - ./www/:/var/www/html/
 
   db:
-    image: mariadb:latest # Specify a version like '10.6' or 'latest'
+    image: mariadb:latest
     restart: unless-stopped
     container_name: db
     volumes:
-      # Persist database data
       - ./mysql/data:/var/lib/mysql
-      # Initial SQL script to run on first setup
       - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
-      # WARNING: Use Docker Secrets in production, not plain environment variables
       MYSQL_ROOT_PASSWORD: 1234567890
       MYSQL_DATABASE: first_database
-    # Optionally, set a user and password for the application to connect:
-    # MYSQL_USER: app_user
-    # MYSQL_PASSWORD: app_password
 
   phpmyadmin:
     image: phpmyadmin:latest
     container_name: phpmyadmin
     restart: always
     ports:
-      # Access phpMyAdmin via port 81 (http://localhost:81)
       - "81:80"
     environment:
-      # Connect to the 'db' service using its name and port
       PMA_HOST: db
-      # Use the same credentials as set for the 'db' service
       MYSQL_ROOT_PASSWORD: 1234567890 
     depends_on:
       - db
