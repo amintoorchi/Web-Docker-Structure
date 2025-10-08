@@ -2,16 +2,9 @@
 
 A clean, ready-to-use Docker-based setup for quickly spinning up a modern web development environment with minimal effort.
 
-
-
-
-<p align="center">
-  <img src="images/screenshot.png" alt="Dashboard Preview" width="600" style="border-radius: 12px;"> 
-</p>
-
-
-
-
+<p align="center"\>
+<img src="images/screenshot.png" alt="Dashboard Preview" width="600" style="border-radius: 12px;">
+</p\>
 
 -----
 
@@ -19,10 +12,11 @@ A clean, ready-to-use Docker-based setup for quickly spinning up a modern web de
 
 This repository provides a fully dockerized stack tailored for **PHP** web development. With a single command, it launches a complete environment including:
 
-  * Latest **NGINX** web server ⚙️
+  * Latest **NGINX** web server 
   * **PHP-FPM** runtime for PHP applications 🐘
-  * **MySQL/MariaDB** database (with persistent storage) 🐬
-  * **phpMyAdmin** GUI for database management 🛠️
+  * **MySQL/MariaDB** database (with persistent sorage) 
+  * **phpMyAdmin** GUI for database management 
+  * **SSL** SSL with Certbot 
 
 The goal is to help developers build, test, and debug their PHP-based projects in an isolated and reproducible environment without the hassle of manual server configuration.
 
@@ -35,11 +29,17 @@ To use this project, ensure you have:
   * **Docker**
   * **Docker Compose** (version 2+)
 
-Install them via [Docker's official documentation](https://docs.docker.com/).
+Install them and tutorial via [Docker's official documentation](https://docs.docker.com/).
 
 -----
 
-### Quick Start
+### Quick Start (Installation & Setup) 🚀
+
+This setup supports two modes: **Development** (quick start) and **Production** (with SSL via Let's Encrypt).
+
+#### **1. Development Mode (Localhost, No SSL)**
+
+Use this mode for local development and testing, without setting up domain or SSL certificates.
 
 1.  **Clone the repository:**
 
@@ -48,8 +48,11 @@ Install them via [Docker's official documentation](https://docs.docker.com/).
     cd Web-Docker-Structure
     ```
 
-2.  **(Optional) Configure base environment variables:**
-    Edit the `docker-compose.yml` file (e.g., set the MySQL root password).
+2.  **Set Default Server_name in NginxConfig (./Web-Docker-Structure/nginx/conf.d):**
+
+    ```bash
+    server_name localhost;
+    ```
 
 3.  **Launch the Containers:**
 
@@ -59,24 +62,63 @@ Install them via [Docker's official documentation](https://docs.docker.com/).
 
 4.  **Access services:**
 
-      * Web app: [http://localhost](https://www.google.com/search?q=http://localhost)
-      * phpMyAdmin: [http://localhost:81](https://www.google.com/search?q=http://localhost:81)
+      * Web app (HTTP): [http://localhost](localhost)
+      * phpMyAdmin: [http://localhost:81](localhost:81)
 
-    <!-- end list -->
+#### **2. Production Mode (With Let's Encrypt SSL)**
 
-    5.  **Stop the Containers:**
+Follow these steps to deploy the stack with a valid SSL certificate for your custom domain, suitable for staging or production.
 
-    <!-- end list -->
-
-    ```bash
-    docker-compose down
-    ```
-
-5.  **To remove volumes (warning: maby deletes database data & ...):**
+1.  **Clone the repository** (if not already done):
 
     ```bash
-    docker-compose down -v
+    git clone https://github.com/amintoorchi/Web-Docker-Structure.git
+    cd Web-Docker-Structure
     ```
+
+2.  **Configure Environment Variables:**
+
+      * Copy the example file:
+        ```bash
+        cp .env.example .env
+        ```
+      * **Edit the `.env` file** and set your **email** and **domain** (e.g., `YOUR_DOMAIN=example.com`, `YOUR_EMAIL=info@example.com`). These are crucial for the SSL certificate request.
+
+3.  **Prepare the SSL Script:**
+
+      * Grant execution permissions to the setup script:
+        ```bash
+        chmod +x setup-ssl.sh
+        ```
+
+4.  **Request the SSL Certificate:**
+
+      * Run the script to generate and obtain the Let's Encrypt certificate:
+        ```bash
+        ./setup-ssl.sh
+        ```
+      * *Note: The script will temporarily start NGINX to complete the ACME challenge.*
+
+5.  **Configure NGINX for SSL:**
+
+      * Navigate to the NGINX configuration file: `nginx/conf.d/default.conf`.
+      * **Modify/uncomment the necessary sections** (as instructed within the `default.conf` file) to enable SSL and point to the newly issued certificate files.
+      * **Critical Security Note:** Ensure the **domain** and **email** values in `default.conf` (`server_name`) **exactly match** the values you entered in the `.env` file.
+
+6.  **Final Launch with SSL:**
+
+      * Stop and remove containers and volumes to ensure a clean launch:
+        ```bash
+        docker-compose down -v
+        ```
+      * Relaunch the stack to load the new NGINX configuration and apply the SSL certificate:
+        ```bash
+        docker-compose up -d
+        ```
+
+7.  **Access Secured Service:**
+
+      * Web app (HTTPS): `https://your-domain.com`
 
 -----
 
@@ -91,93 +133,17 @@ The project is organized as follows:
 | `nginx/` | NGINX configuration files (e.g., `conf.d/` for server blocks). |
 | `php/` | PHP-FPM Dockerfile and settings. |
 | `docker-compose.yml` | Main configuration for all services. |
-| `.env` | Environment variables (e.g., database credentials; ignored in `.gitignore`). |
+| `.env` | Environment variables (e.g., certbot credentials; ignored in `.gitignore`). |
+
+
+Built with ❤️ by [Amin Toorchi](https://github.com/amintoorchi) for the open-source community.
+
 
 -----
-
-### Domain Configuration
-
-To use custom domains (e.g., `web.local`), edit NGINX configs in `nginx/conf.d/` and update the `server_name` directive. Add entries to your `/etc/hosts` (e.g., `127.0.0.1 web.local`) for local development.
-
------
-
-### Volumes and Persistent Data
-
-  * **Web files (`www/`):** Mounted as read-write for development.
-  * **Database data (`mysql/data/`):** Persisted via Docker volumes to retain data across container restarts. **Back up this directory regularly.**
-  * **Logs:** Stored in containers (view with `docker logs <container-name>`).
-
-**Note:** Do not commit sensitive data (e.g., database dumps) to Git. See `.gitignore` for exclusions.
-
------
-
-### Usage Examples
-
-  * **Adding a PHP file:** Place `index.php` in `www/` and access it at [http://localhost](https://www.google.com/search?q=http://localhost).
-  * **Database setup:** Use `mysql/init.sql` to initialize tables. Connect via phpMyAdmin (user: `root`, password: from `docker-compose.yml`) or tools like MySQL Workbench (host: `localhost`, port: `3306`).
-  * **Customization:** Modify `docker-compose.yml` to add services (e.g., Redis) or change ports.
-
------
-
-### Features
-
-  * Instant PHP development environment
-  * Preconfigured NGINX, PHP-FPM, and MySQL
-  * Fully dockerized and portable
-  * Minimal setup: clone and run
-  * Persistent database storage
-  * Support for custom domains
-  * Easy to extend for additional services
-
------
-
-### Default Ports
-
-| Service | Port | Description |
-| :--- | :--- | :--- |
-| **NGINX** | 80 | Main web server (HTTP) |
-| **phpMyAdmin** | 81 | Database GUI |
-| **MySQL** | 3306 | Database connection (if exposed) |
-
------
-
-### Troubleshooting
-
-| Issue | Solution |
-| :--- | :--- |
-| **Permission errors** | Run `docker-compose down` and then `sudo chown -R $USER:$USER .` on the project directory. |
-| **NGINX 502 error** | Check PHP-FPM container status (`docker ps`) and logs (`docker logs <php-container>`). |
-| **Database connection issues** | Verify `docker-compose.yml` variables and `mysql/init.sql` for correct setup. |
-| **Port conflicts** | Update ports in `docker-compose.yml` and restart. |
-| **View logs** | `docker-compose logs -f` Or `docker logs <CONTAINER_NAME>` |
-
-For more help, check Docker documentation or open an issue.
-
------
-
-### Support
-
-Encountered an issue or have a suggestion? Open an [issue](https://www.google.com/search?q=%3Cyour-repo-url%3E/issues) or contribute via [pull request](https://www.google.com/search?q=%3Cyour-repo-url%3E/pulls).
-
------
-
-### License
-
-This project is licensed under the **MIT License** - see the `LICENSE` file for details.
-
-Built with ❤️ by [Amin Toorchi](https://github.com/amintoorchi) using Docker for modern web development.
-
-
-
-
-
-
-
-
 
 ## 🐳 محیط توسعه وب داکریزه‌شده
-یک محیط آماده و ساده برای راه‌اندازی سریع محیط توسعه وب مدرن با حداقل تلاش.
 
+یک محیط آماده و ساده برای راه‌اندازی سریع محیط توسعه وب مدرن با حداقل تلاش.
 
 ### درباره این پروژه
 
@@ -187,6 +153,8 @@ Built with ❤️ by [Amin Toorchi](https://github.com/amintoorchi) using Docker
   * محیط اجرایی **PHP-FPM** برای برنامه‌های PHP 🐘
   * دیتابیس **MySQL/MariaDB** (با ذخیره‌سازی پایدار) 🐬
   * ابزار گرافیکی **phpMyAdmin** برای مدیریت دیتابیس 🛠️
+  * ابزار گرافیکی **phpMyAdmin** برای مدیریت دیتابیس 🛠️
+  * **Certbot** برای مدیریت و دریافت گواهی اس اس ال  🛠️
 
 هدف، کمک به توسعه‌دهندگان برای ساخت، تست و دیباگ پروژه‌های PHP در محیطی ایزوله و قابل‌تکرار بدون دردسر تنظیمات دستی سرور است.
 
@@ -203,7 +171,13 @@ Built with ❤️ by [Amin Toorchi](https://github.com/amintoorchi) using Docker
 
 -----
 
-### راه‌اندازی سریع
+### راه‌اندازی سریع (نصب و راه‌اندازی) 🚀
+
+این ساختار از دو حالت پشتیبانی می‌کند: **توسعه (Development)** برای شروع سریع و **تولید (Production)** با گواهی SSL از Let's Encrypt.
+
+#### **۱. حالت توسعه (Local، بدون SSL)**
+
+از این حالت برای توسعه و تست محلی، بدون نیاز به تنظیم دامنه یا گواهی SSL استفاده کنید.
 
 1.  **مخزن را کلون کنید:**
 
@@ -212,8 +186,11 @@ Built with ❤️ by [Amin Toorchi](https://github.com/amintoorchi) using Docker
     cd Web-Docker-Structure
     ```
 
-2.  **(اختیاری) متغیرهای محیطی پایه را تنظیم کنید:**
-    فایل `docker-compose.yml` را ویرایش کنید (مثل رمز root دیتابیس).
+2.  **یک دامنه دلخواه با توجه با DNS داخلی سیستم خود ست کنید:**
+
+    ```bash
+    server_name localhost 127.0.0.1;
+    ```
 
 3.  **کانتینرها را راه‌اندازی کنید:**
 
@@ -223,24 +200,63 @@ Built with ❤️ by [Amin Toorchi](https://github.com/amintoorchi) using Docker
 
 4.  **به سرویس‌ها دسترسی پیدا کنید:**
 
-      * برنامه وب: [http://localhost](https://www.google.com/search?q=http://localhost)
-      * phpMyAdmin: [http://localhost:81](https://www.google.com/search?q=http://localhost:81)
+      * برنامه وب (HTTP): [http://localhost](localhost)
+      * phpMyAdmin: [http://localhost:81](localhost:81)
 
-    <!-- end list -->
+#### **۲. حالت تولید (با SSL از Let's Encrypt)**
 
-    5.  **برای توقف کانتینرها:**
+این مراحل را برای راه‌اندازی با گواهی SSL معتبر برای دامنه سفارشی خود دنبال کنید، که برای محیط‌های استیجینگ یا تولید مناسب است.
 
-    <!-- end list -->
-
-    ```bash
-    docker-compose down
-    ```
-
-5.  **برای حذف volumeها (هشدار: ممکن است داده‌های دیتابیس و ... حذف شود):**
+1.  **مخزن را کلون کنید** (اگر قبلاً انجام نشده):
 
     ```bash
-    docker-compose down -v
+    git clone https://github.com/amintoorchi/Web-Docker-Structure.git
+    cd Web-Docker-Structure
     ```
+
+2.  **تنظیم متغیرهای محیطی:**
+
+      * از فایل نمونه کپی بگیرید:
+        ```bash
+        cp .env.example .env
+        ```
+      * **فایل `.env` را ویرایش کنید** و **ایمیل** و **دامنه** خود را تنظیم کنید (مثلاً `YOUR_DOMAIN=example.com`، `YOUR_EMAIL=info@example.com`). این مقادیر برای درخواست گواهی SSL حیاتی هستند.
+
+3.  **آماده‌سازی اسکریپت SSL:**
+
+      * مجوز اجرای اسکریپت را بدهید:
+        ```bash
+        chmod +x setup-ssl.sh
+        ```
+
+4.  **دریافت گواهی SSL:**
+
+      * اسکریپت را برای تولید و دریافت گواهی Let's Encrypt اجرا کنید:
+        ```bash
+        ./setup-ssl.sh
+        ```
+      * *توجه: اسکریپت به‌طور موقت NGINX را برای تکمیل چالش ACME راه‌اندازی می‌کند.*
+
+5.  **تنظیم NGINX برای SSL:**
+
+      * به فایل تنظیمات NGINX بروید: `nginx/conf.d/default.conf`.
+      * **بخش‌های لازم را ویرایش/کامنت را بردارید** (مطابق دستورالعمل‌های داخل فایل `default.conf`) تا SSL فعال شود و به فایل‌های گواهی صادرشده اشاره کند.
+      * **نکته امنیتی حیاتی:** مطمئن شوید که مقادیر **دامنه** و **ایمیل** در `default.conf` (`server_name` و مسیرهای SSL) **دقیقاً** با مقادیری که در فایل `.env` وارد کرده‌اید، مطابقت داشته باشد.
+
+6.  **راه‌اندازی نهایی با SSL:**
+
+      * کانتینرها و volumeها را متوقف و حذف کنید تا مطمئن شوید تنظیمات جدید NGINX اعمال می‌شود:
+        ```bash
+        docker-compose down -v
+        ```
+      * ساختار را مجدداً راه‌اندازی کنید تا کانفیگ NGINX جدید و گواهی SSL صادرشده بارگذاری شود:
+        ```bash
+        docker-compose up -d
+        ```
+
+7.  **دسترسی به سرویس ایمن:**
+
+      * برنامه وب (HTTPS): `https://your-domain.com`
 
 -----
 
@@ -255,79 +271,10 @@ Built with ❤️ by [Amin Toorchi](https://github.com/amintoorchi) using Docker
 | `nginx/` | فایل‌های تنظیمات NGINX (مثل `conf.d/` برای server blockها). |
 | `php/` | فایل Dockerfile و تنظیمات PHP-FPM. |
 | `docker-compose.yml` | تنظیمات اصلی همه سرویس‌ها. |
-| `.env` | متغیرهای محیطی (مثل اعتبارنامه دیتابیس؛ در `.gitignore` نادیده گرفته شده). |
-
------
-
-### تنظیم دامنه
-
-برای استفاده از دامنه‌های سفارشی (مثل `web.local`)، فایل‌های تنظیمات NGINX در `nginx/conf.d/` را ویرایش کنید و دستور `server_name` را به‌روزرسانی کنید. برای توسعه محلی، ورودی‌هایی به `/etc/hosts` اضافه کنید (مثل `127.0.0.1 web.local`).
-
------
-
-### Volumeها و داده‌های پایدار
-
-  * **فایل‌های وب (`www/`):** به‌صورت خواندن/نوشتن برای توسعه mount شده.
-  * **داده‌های دیتابیس (`mysql/data/`):** با volumeهای داکر برای حفظ داده‌ها در ری‌استارت‌ها ذخیره می‌شود. **از این دایرکتوری مرتباً بک‌آپ بگیرید.**
-  * **لاگ‌ها:** در کانتینرها ذخیره می‌شود (با `docker logs <container-name>` ببینید).
-
-**توجه:** داده‌های حساس (مثل دامپ‌های دیتابیس) را به گیت commit نکنید. به `.gitignore` نگاه کنید.
-
------
-
-### مثال‌های استفاده
-
-  * **افزودن فایل PHP:** فایل `index.php` را در `www/` قرار دهید و در [http://localhost](https://www.google.com/search?q=http://localhost) ببینید.
-  * **تنظیم دیتابیس:** از `mysql/init.sql` برای ساخت جدول‌ها استفاده کنید. با phpMyAdmin (کاربر: `root`، رمز: از `docker-compose.yml`) یا ابزارهایی مثل MySQL Workbench (هاست: `localhost`، پورت: `3306`) متصل شوید.
-  * **سفارشی‌سازی:** فایل `docker-compose.yml` را برای افزودن سرویس‌ها (مثل Redis) یا تغییر پورت‌ها ویرایش کنید.
-
------
-
-### ویژگی‌ها
-
-  * محیط فوری برای توسعه PHP
-  * سرویس‌های از پیش تنظیم‌شده NGINX، PHP-FPM و MySQL
-  * کاملاً داکریزه‌شده و قابل‌حمل
-  * راه‌اندازی ساده: کلون و اجرا
-  * ذخیره‌سازی پایدار دیتابیس
-  * پشتیبانی از دامنه‌های سفارشی
-  * قابل‌گسترش برای سرویس‌های اضافی
-
------
-
-### پورت‌های پیش‌فرض
-
-| سرویس | پورت | توضیحات |
-| :--- | :--- | :--- |
-| **NGINX** | 80 | وب‌سرور اصلی (HTTP) |
-| **phpMyAdmin** | 81 | رابط گرافیکی دیتابیس |
-| **MySQL** | 3306 | اتصال دیتابیس (اگر expose شده) |
-
------
-
-### عیب‌یابی
-
-| مشکل | راه‌حل |
-| :--- | :--- |
-| **خطاهای Permission** | دستور `docker-compose down` و سپس `sudo chown -R $USER:$USER .` را اجرا کنید. |
-| **خطای 502 NGINX** | وضعیت کانتینر PHP-FPM را چک کنید (`docker ps`) و لاگ‌ها را ببینید (`docker logs <php-container>`). |
-| **مشکل اتصال دیتابیس** | متغیرهای `docker-compose.yml` و فایل `mysql/init.sql` را بررسی کنید. |
-| **تداخل پورت** | پورت‌ها را در `docker-compose.yml` تغییر دهید و ری‌استارت کنید. |
-| **لاگ‌ها** | `docker-compose logs -f` یا `docker logs <CONTAINER_NAME>` |
-
-برای کمک بیشتر، مستندات داکر یا issues مخزن را ببینید.
-
------
-
-### پشتیبانی
-
-مشکل یا پیشنهادی دارید؟ یک [issue](https://www.google.com/search?q=%3Cyour-repo-url%3E/issues) باز کنید یا با [pull request](https://www.google.com/search?q=%3Cyour-repo-url%3E/pulls) همکاری کنید.
-
------
-
-### لایسنس
-
-این پروژه تحت لایسنس **MIT** منتشر شده است - جزئیات در فایل `LICENSE`.
+| `.env` | متغیرهای محیطی (مثل اعتبارنامه دیتابیس؛ در `.gitignore` نادیده گرفته شده).
 
 
-طراحی و توسعه با ❤️ توسط [Amin Toorchi](https://github.com/amintoorchi) برای توسعه دهندگان و جامعه برنامه نویسان متن باز  
+
+
+
+طراحی و توسعه با ❤️ توسط [Amin Toorchi](https://github.com/amintoorchi) برای جامعه برنامه‌نویسان متن باز.

@@ -139,8 +139,9 @@
     <div class="container">
         <h1>XdevTeam</h1>
         <p>This is the default page for your server. Everything is up and running smoothly!</p>
-        <a href="https://xdevteam.ir" target="_blank" class="btn">Explore Our Services</a>
-        <a href="https://github.com/amintoorchi/Web-Docker-Structure" target="_blank" class="btn btn-secondary">Stars us on github</a>
+        <p>به محیط داکرایز شده وب خود خوش آمدید!</p>
+        <a href="https://xdevteam.ir" target="_blank" class="btn btn-secondary" >Explore Our Services</a>
+        <a href="https://github.com/amintoorchi/Web-Docker-Structure" target="_blank" class="btn">Stars us on github :))</a>
     </div>
 </body>
 </html>
